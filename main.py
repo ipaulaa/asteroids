@@ -5,7 +5,7 @@ import pygame.sprite
 
 from asteroid import Asteroid
 from asteroid_field import AsteroidField
-from constants import SCREEN_HEIGHT, SCREEN_WIDTH
+from constants import BACKGROUND_COLOR, SCREEN_HEIGHT, SCREEN_WIDTH
 from logger import log_event, log_state
 from player import Player
 from shot import Shot
@@ -40,7 +40,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        screen.fill("black")
+        screen.fill(BACKGROUND_COLOR)
 
         updatable.update(dt)
         for asteroid in asteroids:
@@ -64,3 +64,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+1
