@@ -22,9 +22,9 @@ class Player(CircleShape):
     def triangle(self) -> list[pygame.Vector2]:
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
         right = pygame.Vector2(0, 1).rotate(self.rotation + 90) * self.radius / 1.5
-        a = self.position + forward * self.radius
-        b = self.position - forward * self.radius - right
-        c = self.position - forward * self.radius + right
+        a = self.position - forward * self.radius
+        b = self.position + forward * self.radius - right
+        c = self.position + forward * self.radius + right
         return [a, b, c]
 
     def draw(self, screen: pygame.Surface) -> None:
@@ -42,9 +42,9 @@ class Player(CircleShape):
             self.rotate(dt)
 
         if keys[pygame.K_s]:
-            self.move(-dt)
-        if keys[pygame.K_w]:
             self.move(dt)
+        if keys[pygame.K_w]:
+            self.move(-dt)
 
         if keys[pygame.K_SPACE] and self.cooldown_timer <= 0:
             self.cooldown_timer = PLAYER_SHOOT_COOLDOWN_SECONDS
